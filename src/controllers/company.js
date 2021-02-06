@@ -1,5 +1,6 @@
 const Company = require("../repositories/company");
 const response = require("../utils/response");
+const Password = require("../utils/password");
 
 const addCompany = async (ctx) => {
   const {
@@ -14,7 +15,21 @@ const addCompany = async (ctx) => {
     response(ctx, 401, { message: "Required fields not filled." });
   }
 
-  const company = { thumbnail, name, description, email, password };
+  const encrypted_password = await Password.encrypt(password);
+
+  const checked = await Company.getCompanyByEmail(email);
+
+  if (checked) {
+    return response(ctx, 401, { message: "Email already in use." });
+  }
+
+  const company = {
+    thumbnail,
+    name,
+    description,
+    email,
+    password: encrypted_password,
+  };
 
   const newCompany = await Company.addCompany(company);
 

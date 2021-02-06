@@ -33,4 +33,19 @@ const getCompanies = async (category) => {
   return query.rows;
 };
 
-module.exports = { addCompany, getCompanyById, getCompanies };
+const getCompanyByEmail = async (email) => {
+  const q = {
+    text: "SELECT * from companies where email = $1",
+    values: [email],
+  };
+
+  const query = await database.query(q);
+  return query.rows[0];
+};
+
+module.exports = {
+  addCompany,
+  getCompanyById,
+  getCompanies,
+  getCompanyByEmail,
+};

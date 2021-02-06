@@ -24,11 +24,19 @@ const addUser = async (ctx) => {
     });
   }
 
+  const encrypted_password = await Password.encrypt(password);
+
+  const checked = await User.getUserByEmail(email);
+
+  if (checked) {
+    return response(ctx, 401, { message: "Email already in use." });
+  }
+
   const user = {
     id,
     thumbnail,
     email,
-    password,
+    password: encrypted_password,
     name,
     role,
     about,
