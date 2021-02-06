@@ -7,8 +7,8 @@ const Challenges = require("./controllers/challenges");
 const Company = require("./controllers/company");
 
 // auth
-router.post("/auth", Auth.authenticate);
-
+router.post("/user-login", Auth.authenticate);
+router.post("/company-login", Auth.authenticate);
 // user
 router.post("/user", User.addUser);
 router.get("/user/:id", User.getUserById);
