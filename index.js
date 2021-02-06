@@ -11,4 +11,6 @@ app.use(bodyparser());
 
 app.use(router.routes()).use(router.allowedMethods());
 
-app.listen(PORT, "0.0.0.0", null, () => console.log("backend online."));
+app.listen(process.env.PORT || 8081, "0.0.0.0", null, () =>
+  console.log("backend online.")
+);
