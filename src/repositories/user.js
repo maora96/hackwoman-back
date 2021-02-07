@@ -3,7 +3,7 @@ const database = require("../utils/database");
 const addUser = async (user) => {
   const q = {
     text:
-      "insert into users (id, thumbnail, email, password, name, role, about, technologies, linkedin, github, behance, apps) values (default, $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) returning *",
+      "insert into users (id, thumbnail, email, password, name, role, about, technologies, linkedin, github, behance, apps, background) values (default, $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) returning *",
     values: [
       user.thumbnail,
       user.email,
@@ -16,6 +16,7 @@ const addUser = async (user) => {
       user.github,
       user.behance,
       user.apps,
+      user.background,
     ],
   };
   const query = await database.query(q);

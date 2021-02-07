@@ -11,6 +11,7 @@ const addChallenge = async (ctx) => {
     date_added = null,
     expiration_date = null,
     category = null,
+    thumbnail = null,
   } = ctx.request.body;
 
   if (
@@ -21,7 +22,8 @@ const addChallenge = async (ctx) => {
     !links ||
     !date_added ||
     !expiration_date ||
-    !category
+    !category ||
+    !thumbnail
   ) {
     response(ctx, 404, { message: "Required fields not filled." });
   }
@@ -35,6 +37,7 @@ const addChallenge = async (ctx) => {
     date_added,
     expiration_date,
     category,
+    thumbnail,
   };
 
   const dbChallenge = await Challenges.addChallenge(challenge);

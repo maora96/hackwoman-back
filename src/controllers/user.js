@@ -16,6 +16,7 @@ const addUser = async (ctx) => {
     github = null,
     behance = null,
     apps = null,
+    background = null,
   } = ctx.request.body;
 
   const encrypted_password = await Password.encrypt(password);
@@ -39,6 +40,7 @@ const addUser = async (ctx) => {
     github,
     behance,
     apps,
+    background,
   };
 
   const newUser = await User.addUser(user);
