@@ -11,10 +11,6 @@ const addCompany = async (ctx) => {
     password = null,
   } = ctx.request.body;
 
-  if (!name || !description || !email || !password) {
-    response(ctx, 401, { message: "Required fields not filled." });
-  }
-
   const encrypted_password = await Password.encrypt(password);
 
   const checked = await Company.getCompanyByEmail(email);

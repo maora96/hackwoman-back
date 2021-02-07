@@ -18,12 +18,6 @@ const addUser = async (ctx) => {
     apps = null,
   } = ctx.request.body;
 
-  if (!email || !password || !name || !role || !about) {
-    return response(ctx, 401, {
-      message: "User must have email, password, name, role and about section.",
-    });
-  }
-
   const encrypted_password = await Password.encrypt(password);
 
   const checked = await User.getUserByEmail(email);
