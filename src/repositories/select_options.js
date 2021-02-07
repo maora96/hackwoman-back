@@ -6,7 +6,7 @@ const getLanguageOptions = async () => {
   };
 
   const query = await database.query(q);
-  return query.rows;
+  return query.rows[0];
 };
 
 const getFieldOptions = async () => {
@@ -15,7 +15,7 @@ const getFieldOptions = async () => {
   };
 
   const query = await database.query(q);
-  return query.rows;
+  return query.rows[0];
 };
 
 const getAppOptions = async () => {
@@ -24,7 +24,7 @@ const getAppOptions = async () => {
   };
 
   const query = await database.query(q);
-  return query.rows;
+  return query.rows[0];
 };
 
 module.exports = { getLanguageOptions, getFieldOptions, getAppOptions };
