@@ -22,6 +22,7 @@ router.get("/company/:id", Company.getCompanyById);
 // challenges
 router.post("/challenges", Challenges.addChallenge);
 router.get("/challenges/:category", Challenges.getChallenges);
+router.get("/challenges", Challenges.getAllChallenges);
 router.get("/challenge/:id", Challenges.getChallengeById);
 
 // select

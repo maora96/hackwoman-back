@@ -78,4 +78,18 @@ const getChallenges = async (ctx) => {
   }
 };
 
-module.exports = { addChallenge, getChallengeById, getChallenges };
+const getAllChallenges = async (ctx) => {
+  const challenges = await Challenges.getChallenges();
+  if (challenges) {
+    response(ctx, 201, challenges);
+  } else {
+    response(ctx, 401, { message: "No challenges found." });
+  }
+};
+
+module.exports = {
+  addChallenge,
+  getChallengeById,
+  getChallenges,
+  getAllChallenges,
+};

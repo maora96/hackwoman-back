@@ -37,4 +37,15 @@ const getChallengesByCategory = async (category) => {
   return query.rows;
 };
 
-module.exports = { addChallenge, getChallengeById, getChallengesByCategory };
+const getChallenges = async () => {
+  const q = { text: "select * from challenges" };
+  const query = await database.query(q);
+  return query.rows;
+};
+
+module.exports = {
+  addChallenge,
+  getChallengeById,
+  getChallengesByCategory,
+  getChallenges,
+};
